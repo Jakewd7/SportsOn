@@ -25,7 +25,7 @@ const CartItems = () => {
                     <div className="border-b border-gray-200 p-4 flex gap-3" key={index}>
                         <div className="bg-primary-light aspect-square w-16 flex justify-center items-center">
                             <Image
-                                src={`/image/products/${item.imgUrl}`}
+                                src={`/image/Products/${item.imgUrl}`}
                                 width={63}
                                 height={63}
                                 alt={item.name}
