@@ -63,32 +63,32 @@ const productList = [
 ];
 
 const ProductSection = () => {
-    return (
-        <section id="products-section" className="mx-auto" mt-32>
-            <h2 className="italic font-bold text-4xl text-center mb-11"><span className="text-primary">OUR </span>PRODUCTS</h2>
-            <div className="grid grid-cols-4 gap-5">
-                {
-                    productList.map((item) => (
-                        <Link href="" key={item.id} className="p-1.5 bg-white hover:drop-shadow-xl duration-300">
-                            <div className="bg-primary-light aspect-square w-full flex justify-center items-center relative">
-                                <Image src={item.img} alt={item.name} width={300} height={300} className="Aspect-square object-contain"/>
-                                <Button className="w-10 h-10 p-2! absolute right-3 top-3">
-                                    <FiPlus size={24}/>
-                                </Button>
-                            </div>
-                            <h3 className="font-medium text-lg mb-1.5 mt-4">
-                               {item.name}    
-                            </h3> 
-                            <div className="flex justify-between mb-8">
-                                <div className="text-gray-500">{item.category}</div>
-                                <div className="text-primary font-medium">{Intl.NumberFormat("id-ID", {style: "currency", currency: "IDR", maximumSignificantDigits: 3}).format(item.price)}</div>
-                            </div>
-                        </Link>
-                    ))
-                }
-            </div>
-        </section>
-    )
+  return (
+    <section id="products-section" className="mx-auto" mt-32>
+      <h2 className="italic font-bold text-4xl text-center mb-11"><span className="text-primary">OUR </span>PRODUCTS</h2>
+      <div className="grid grid-cols-4 gap-5">
+        {
+          productList.map((item) => (
+            <Link href="" key={item.id} className="p-1.5 bg-white hover:drop-shadow-xl duration-300">
+              <div className="bg-primary-light aspect-square w-full flex justify-center items-center relative">
+                <Image src={item.img} alt={item.name} width={300} height={300} className="Aspect-square object-contain" />
+                <Button className="w-10 h-10 p-2! absolute right-3 top-3">
+                  <FiPlus size={24} />
+                </Button>
+              </div>
+              <h3 className="font-medium text-lg mb-1.5 mt-4">
+                {item.name}
+              </h3>
+              <div className="flex justify-between mb-8">
+                <div className="text-gray-500">{item.category}</div>
+                <div className="text-primary font-medium">{Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumSignificantDigits: 3 }).format(item.price)}</div>
+              </div>
+            </Link>
+          ))
+        }
+      </div>
+    </section>
+  )
 }
 
 export default ProductSection;
