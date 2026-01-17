@@ -9,7 +9,7 @@ const ProductDetail = () => {
         <main className="container mx-auto py-40 flex gap-12">
             <div className="bg-primary-light aspect-square min-w-140 flex justify-center items-center">
                 <Image
-                    src="/image/products/product-4.png"
+                    src="/image/Products/product-4.png"
                     width={550}
                     height={550}
                     alt="product 4 image"
