@@ -64,12 +64,12 @@ const productList = [
 
 const ProductSection = () => {
   return (
-    <section id="products-section" className="mx-auto" mt-32>
+    <section id="products-section" className="mx-auto mt-32 mb-52">
       <h2 className="italic font-bold text-4xl text-center mb-11"><span className="text-primary">OUR </span>PRODUCTS</h2>
       <div className="grid grid-cols-4 gap-5">
         {
           productList.map((item) => (
-            <Link href="" key={item.id} className="p-1.5 bg-white hover:drop-shadow-xl duration-300">
+            <Link href={`product/${item.id}`} key={item.id} className="p-1.5 bg-white hover:drop-shadow-xl duration-300">
               <div className="bg-primary-light aspect-square w-full flex justify-center items-center relative">
                 <Image src={item.img} alt={item.name} width={300} height={300} className="Aspect-square object-contain" />
                 <Button className="w-10 h-10 p-2! absolute right-3 top-3">
