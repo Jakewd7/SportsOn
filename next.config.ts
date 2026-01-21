@@ -2,12 +2,18 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
-   staticPageGenerationTimeout: 60,
+  staticPageGenerationTimeout: 60,
 
   images: {
-      domains: ["be-sporton.agunacourse.com"],
-    },
-   
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "be-sporton.agunacourse.com",
+        pathname: "/uploads/**"
+      }
+    ]
+  },
+
 };
 
 export default nextConfig;
