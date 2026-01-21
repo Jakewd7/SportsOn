@@ -4,21 +4,32 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { FiSearch, FiShoppingBag } from "react-icons/fi"
-import Cart from "../product_detail/cart";
+import { useCartStore } from "@/app/hooks/usecartstore";
+import CartPopup from "../ui/cartpopup";
 
 const Navbar = () => {
-
+    const { items } = useCartStore();
     const [isCartPopupOpen, setIsCartPopupOpen] = useState(false);
-    return <header>
-        <div className="flex justify-between gap-10 container mx-auto py-6">
-            <Link href="/">
-                <Image src="/icon/logo.svg" alt="ini logo" width={127} height={30} />
-            </Link>
 
-            <nav className="flex gap-21 font-medium">
-                <Link href="#" className="relative after:content-[''] after:block after:bg-primary after:rounded-full after:h-[3px] after:w-1/2 after:absolute after:left-1/2 after:-translate-x-1/2 after:translate-y-1.5" >Home</Link>
+    return <header>
+        <div className="flex justify-between gap-10 container mx-auto py-7">
+            <Link href="/">
+                <Image
+                    src="/icon/logo.svg"
+                    alt="sporton logo"
+                    width={127}
+                    height={30}
+                />
+            </Link>
+            <nav className="flex gap-24 font-medium">
+                <Link
+                    href="#"
+                    className="relative after:content-[''] after:block after:bg-primary after:rounded-full after:h-0.75 after:w-1/2 after:absolute after:left-1/2 after:-translate-x-1/2 after:translate-y-1"
+                >
+                    Home
+                </Link>
                 <Link href="#">Category</Link>
-                <Link href="#">Explor Products</Link>
+                <Link href="#">Explore Products</Link>
             </nav>
             <div className="relative flex gap-10">
                 <FiSearch size={24} />
@@ -27,11 +38,18 @@ const Navbar = () => {
                     onClick={() => setIsCartPopupOpen(!isCartPopupOpen)}
                 >
                     <FiShoppingBag size={24} />
-                    <div className="bg-primary rounded-full w-3.5 h-3.5 absolute -top-1 -right-1 text-[10px] text-white text-center">
-                        3
-                    </div>
+                    {items.length ? (
+                        <div className="bg-primary rounded-full w-3.5 h-3.5 absolute -top-1 -right-1 text-[10px] text-white text-center">
+                            {items.length}
+                        </div>
+                    ) : (
+                        <></>
+                    )}
                 </button>
-                {isCartPopupOpen && <Cart />}
+                {isCartPopupOpen && (
+                    <CartPopup onClose={() => setIsCartPopupOpen(false)} />
+                )}
+
             </div>
         </div>
     </header>;
