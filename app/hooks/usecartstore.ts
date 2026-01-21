@@ -6,16 +6,16 @@ export interface CartItem extends product {
     qty: number
 }
 
-export interface customerinfo {
+export interface CustomerInfo {
     customerName: string;
     customerContact: number | null;
     customerAddress: string;
 }
 
 interface CartStore {
-    customerInfo: customerinfo | null;
+    customerInfo: CustomerInfo | null;
     items: CartItem[];
-    setCustomerInfo: (info: customerinfo) => void;
+    setCustomerInfo: (info: CustomerInfo) => void;
     addItem: (product: product, qty?: number) => void;
     removeItem: (productId: string) => void;
     reset: () => void;

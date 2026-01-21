@@ -12,7 +12,7 @@ type TProductActionsProps = {
     stock: number;
 }
 
-const ProductAction = ({ product, stock }: TProductActionsProps) => {
+const ProductAction = ({ product }: TProductActionsProps) => {
 
     const { addItem } = useCartStore();
     const { push } = useRouter();

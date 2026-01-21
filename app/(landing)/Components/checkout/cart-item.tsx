@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import CardHeader from "../ui/cartheader";
 import Image from "next/image";
 import priceFormatter from "../../utils/formatter";
@@ -15,7 +14,6 @@ type TCartItems = {
 
 const CartItems = ({ handlePayment }: TCartItems) => {
     const { items, removeItem } = useCartStore();
-    const { push } = useRouter();
 
     const totalPrice = items.reduce(
         (total, item) => total + item.price * item.qty,

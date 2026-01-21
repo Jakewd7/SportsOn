@@ -1,33 +1,59 @@
-const order = () => {
+"use client";
+
+import { CustomerInfo } from "@/app/hooks/usecartstore";
+import CardHeader from "../ui/cartheader";
+
+type TOrderInformation = {
+    formData: CustomerInfo;
+    setFormData: React.Dispatch<React.SetStateAction<CustomerInfo>>;
+};
+
+const Order = ({ formData, setFormData }: TOrderInformation) => {
+    const handleInputChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
     return (
-        <div className="bg-white">
-            <div className="px-5 py-4 border-b border-gray-200">
-                <h1 className="font-bold text-lg">Order Infomration</h1>
-            </div>
+        <CardHeader title="Order Information">
             <div className="p-5">
                 <div className="input-group">
-                    <label htmlFor="full_name">Full Name</label>
-                    <input type="text" placeholder="type your full name" id="full_name" />
-                </div>
-                <div className="input-group">
-                    <label htmlFor="wa_number">Whatsapp Number</label>
+                    <label htmlFor="customerName">Full Name</label>
                     <input
                         type="text"
-                        placeholder="Type your whatsapp number"
-                        id="wa_number"
+                        placeholder="Type your full name"
+                        id="customerName"
+                        name="customerName"
+                        value={formData.customerName}
+                        onChange={handleInputChange}
                     />
                 </div>
                 <div className="input-group">
-                    <label htmlFor="shipping_address">Shipping Address</label>
+                    <label htmlFor="customerContact">Whatsapp Number</label>
+                    <input
+                        type="number"
+                        placeholder="Type your whatsapp number"
+                        id="customerContact"
+                        name="customerContact"
+                        value={formData.customerContact ?? ""}
+                        onChange={handleInputChange}
+                    />
+                </div>
+                <div className="input-group">
+                    <label htmlFor="customerAddress">Shipping Address</label>
                     <textarea
                         placeholder="Type your shipping address"
-                        id="shipping_address"
+                        id="customerAddress"
+                        name="customerAddress"
                         rows={7}
+                        value={formData.customerAddress}
+                        onChange={handleInputChange}
                     />
                 </div>
             </div>
-        </div>
-    )
-}
+        </CardHeader>
+    );
+};
 
-export default order;
+export default Order;

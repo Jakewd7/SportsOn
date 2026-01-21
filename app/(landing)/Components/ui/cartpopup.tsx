@@ -7,14 +7,8 @@ import Button from "./button";
 import { FiArrowRight, FiTrash2 } from "react-icons/fi";
 import { useCartStore } from "@/app/hooks/usecartstore";
 import { getImageUrl } from "@/app/lib/api";
-import { useEffect, useRef } from "react";
 
-type CartPopupProps = {
-    onClose: () => void;
-};
-
-const CartPopup = ({ onClose }: CartPopupProps) => {
-    const popupRef = useRef<HTMLDivElement>(null);
+const CartPopup = () => {
     const { push } = useRouter();
     const { items, removeItem } = useCartStore();
 
@@ -28,22 +22,6 @@ const CartPopup = ({ onClose }: CartPopupProps) => {
     const handleCheckout = () => {
         push("/checkout");
     };
-
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (
-                popupRef.current &&
-                !popupRef.current.contains(event.target as Node)
-            ) {
-                onClose();
-            }
-        };
-
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [onClose]);
 
     return (
         <div className="absolute bg-white right-0 top-12 shadow-xl shadow-black/10 border border-gray-200 w-90 z-10">

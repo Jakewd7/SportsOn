@@ -46,10 +46,7 @@ const Navbar = () => {
                         <></>
                     )}
                 </button>
-                {isCartPopupOpen && (
-                    <CartPopup onClose={() => setIsCartPopupOpen(false)} />
-                )}
-
+                {isCartPopupOpen && <CartPopup />}
             </div>
         </div>
     </header>;
