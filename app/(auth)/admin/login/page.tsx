@@ -1,5 +1,6 @@
 "use client";
 
+import Button from "@/app/(landing)/Components/ui/button";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -7,7 +8,7 @@ const LoginPage = () => {
     const { push } = useRouter();
     return (
         <main className="bg-[#F7F9FA] w-full min-h-screen flex justify-center items-center">
-            <div className="max-w-136 w-full bg-white rounded-x1 border-t-4 border-primary py-12 px-18">
+            <div className="max-w-136 w-full bg-white rounded-xl shadow-md border-t-4 border-primary py-12 px-18">
                 <Image
                     src="/icon/logo-admin.svg"
                     alt="admin"
@@ -38,12 +39,12 @@ const LoginPage = () => {
                         className="rounded-lg!"
                     />
                 </div>
-                <button
+                <Button
                     className="w-full rounded-lg! mb-8"
                     onClick={() => push("/admin/products")}
                 >
                     Sign In
-                </button>
+                </Button>
             </div>
         </main>
     );
